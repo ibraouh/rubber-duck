@@ -1,6 +1,6 @@
-# Ideas
+# Rubber Duck
 
-A native iOS app for reworking ideas. Bring an idea that isn't quite there, or one you've gone off. Claude asks questions until it understands what you liked and what broke, then offers alternatives that keep the good part and fix the bad one. Pick one to go deeper, and lock it in as an idea card when you're happy with it.
+A native iOS app for reworking ideas, named after rubber-duck debugging: explain your idea out loud and it starts to make sense. Bring an idea that isn't quite there, or one you've gone off. Claude asks questions until it understands what you liked and what broke, then offers alternatives that keep the good part and fix the bad one. Pick one to go deeper, and lock it in as an idea card when you're happy with it.
 
 SwiftUI on iOS 26 with Liquid Glass, SwiftData for storage, and the Claude API (`claude-opus-5-5`) for the conversation.
 
@@ -34,6 +34,8 @@ SwiftUI on iOS 26 with Liquid Glass, SwiftData for storage, and the Claude API (
 - **History replay.** Claude's reply blocks are stored exactly as returned and sent back unchanged, which keeps its earlier reasoning valid and the prompt cache warm. Don't edit `Prompts.coachSystem` mid-conversation in code that reuses old conversations; if you do, the API drops the stale reasoning rather than failing.
 - **iCloud sync, no login.** SwiftData syncs ideas and conversations to the private iCloud database (container `iCloud.com.raouh.ideas`) of whoever is signed in on the device, so they reach your other devices and survive a lost phone. If iCloud isn't available the same store works on the device only. The API key (Keychain, this device only) and theme stay per device. Sync needs a paid Apple developer team (see Running it).
 - **Themes.** System (standard iOS: system colors and font, blue tint, follows Light and Dark Mode; the default), Mono (black and white, coding font, git vocabulary) and Farm (sky, hills, flowers, rounded font, garden vocabulary). The theme is stored per device. System tints controls with the label color, as iOS 26 does, and keeps blue for your bubbles and the main actions; delete is always red. Light or dark is set on the window in `RootView`, because SwiftUI's `preferredColorScheme(nil)` doesn't undo an earlier forced mode.
+
+The app was first called Ideas. The bundle ID (`com.raouh.ideas`), the iCloud container (`iCloud.com.raouh.ideas`) and the Xcode target (`IdeaApp`) keep the old name on purpose: changing the bundle ID or container would make iOS treat it as a new app and leave existing ideas behind.
 
 ## Running it
 
@@ -94,7 +96,7 @@ IdeaApp/
   Theme/                  Theme definitions and the drawn backgrounds
   Views/                  Tabs (Home, Ideas, Settings, Search), journey map, conversation, Messages-style bubbles and composer, diagnosis bar, idea card
   Support/                Keychain, debug scenarios, sample data
-scripts/make-icon.swift   Draws the app icon (light, dark, tinted) into the asset catalog
+scripts/make-icon.swift   Draws the rubber-duck app icon (light, dark, tinted) into the asset catalog
 archive/prototypes/       The layout prototypes (Chats, Home, Journeys) and the old sidebar; not compiled
 backups/                  A copy of the simulator store from before iCloud sync
 ```
