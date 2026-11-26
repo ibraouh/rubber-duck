@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  For installing on a phone with a free (Personal Team) Apple account, which can't
+  use iCloud or push notifications. Builds signed with this keep ideas on the
+  device only (see IdeaApp.makeContainer). Paid-account builds use IdeaApp.entitlements.
+-->
+<plist version="1.0">
+<dict/>
+</plist>
